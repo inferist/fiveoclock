@@ -45,8 +45,8 @@ for target_user in target_users:
                 api.PostUpdate("敗北 orz\n時間差 {:.2f} 秒".format(
                     ((int(clock_status.id)>>22)-(int(s.id)>>22))/1000.0), in_reply_to_status_id=s.id, auto_populate_reply_metadata=True)
                 
-true_ojisan_utc_epoch = datetime.datetime.fromtimestamp((clock_status.id >> 22) + 1288834974657) / 1000.0)
-true_delay = true_ojisan_utc_epoch - datetime.datetime(tweet_tm.tm_year, tweet_tm.tm_month, tweet_tm.tm_day, 8)
+true_ojisan_utc_epoch = datetime.datetime.fromtimestamp(((clock_status.id >> 22) + 1288834974657) / 1000.0)
+true_delay = true_ojisan_utc_epoch - datetime.datetime(tweet_tm.tm_year, tweet_tm.tm_mon, tweet_tm.tm_mday, 8)
 
 api.PostUpdate("{:d} 人中 ".format(1+len(target_users))+"{:d} 位❣".format(ranking)
-               +"\n遅延 {:.2f} 秒".format(true_delay), in_reply_to_status_id=clock_status.id)
+               +"\n遅延 {:.2f} 秒".format(true_delay.total_seconds()), in_reply_to_status_id=clock_status.id)
